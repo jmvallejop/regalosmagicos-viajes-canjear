@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Regalos Mágicos – Canjea tu código</title>
+
+  <!-- Tipografía manuscrita -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --morado: #7b4ba3;
+      --malva: #c7a6d8;
+      --malva-claro: #f3e9fa;
+      --menta: #9ef7d2;
+      --menta-oscuro: #6bc3a0;
+      --texto: #3a2e4d;
+      --dorado: #e8d18f;
+    }
+
+    body {
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background: var(--malva-claro);
+      color: var(--texto);
+      margin: 0;
+      padding: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.6) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+
+    header {
+      background: var(--morado);
+      color: white;
+      text-align: center;
+      padding: 25px 10px;
+      position: relative;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.4rem;
+      font-family: "Great Vibes", cursive;
+      letter-spacing: 1px;
+    }
+
+    /* Estrellitas decorativas */
+    header::before, header::after {
+      content: "✦";
+      font-size: 1.8rem;
+      position: absolute;
+      top: 10px;
+      color: var(--dorado);
+    }
+    header::before { left: 20px; }
+    header::after { right: 20px; }
+
+    main {
+      max-width: 700px;
+      margin: 40px auto;
+      background: white;
+      padding: 25px 30px 35px;
+      border-radius: 14px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+      border: 2px solid var(--malva);
+      position: relative;
+    }
+
+    /* Estrellas en el borde */
+    main::before, main::after {
+      content: "✧";
+      font-size: 1.6rem;
+      position: absolute;
+      color: var(--dorado);
+    }
+    main::before { top: -12px; left: 20px; }
+    main::after { bottom: -12px; right: 20px; }
+
+    h2 {
+      margin-top: 0;
+      color: var(--morado);
+      font-family: "Great Vibes", cursive;
+      font-size: 2rem;
+    }
+
+    p {
+      line-height: 1.6;
+    }
+
+    label {
+      display: block;
+      margin-top: 20px;
+      font-weight: 600;
+      color: var(--morado);
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 6px;
+      border: 2px solid var(--malva);
+      font-size: 1rem;
+      background: #fff;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 12px 22px;
+      border: none;
+      border-radius: 6px;
+      background: var(--menta);
+      color: #1f3b32;
+      font-size: 1rem;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.2s;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+
+    button:hover {
+      background: var(--menta-oscuro);
+    }
+
+    #resultado {
+      margin-top: 25px;
+      padding: 18px;
+      border-radius: 10px;
+      background: var(--malva-claro);
+      border: 2px solid var(--malva);
+      display: none;
+    }
+
+    #resultado h3 {
+      margin-top: 0;
+      color: var(--morado);
+      font-family: "Great Vibes", cursive;
+      font-size: 1.8rem;
+    }
+
+    ul li {
+      margin-bottom: 6px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Regalos Mágicos – Zona de Familias Elegidas</h1>
+  </header>
+
+  <main>
+    <h2>Canjea aquí tu código secreto</h2>
+    <p>
+      A veces, los Reyes Magos no dejan solo paquetes bajo el árbol.
+      Algunas familias reciben una misión especial: <strong>vivir una aventura juntos</strong>.
+    </p>
+    <p>
+      Si tienes un código mágico, escríbelo aquí abajo y descubre tu regalo.
+    </p>
+
+    <label for="codigo">Código mágico:</label>
+    <input id="codigo" type="text" placeholder="Escribe aquí tu código, por ejemplo: RM-2026-XXXX">
+    <button onclick="canjear()">Canjear regalo</button>
+
+    <div id="resultado"></div>
+  </main>
+
+  <script>
+    function canjear() {
+      const codigo = document.getElementById("codigo").value.trim();
+      const resultado = document.getElementById("resultado");
+      resultado.style.display = "block";
+
+      if (codigo.toUpperCase() === "RM-2026-PARIS-ISABEL") {
+        resultado.innerHTML = `
+          <h3>¡Código aceptado!</h3>
+          <p>¡Enhorabuena, familia de Isabel!</p>
+          <p>
+            Los Reyes Magos han reservado para vosotros algo más que un simple regalo:
+            <br><br>
+            <strong>Tenéis a vuestra disposición los recursos necesarios para organizar, junto a Isabel, un viaje de 6 días a París con visita a Disneyland.</strong>
+          </p>
+          <p>A partir de ahora, vuestra misión es:</p>
+          <ul>
+            <li><strong>Elegir juntos</strong> las fechas del viaje.</li>
+            <li><strong>Decidir en familia</strong> el alojamiento y qué queréis ver en París.</li>
+            <li><strong>Reservar un día o varios</strong> para disfrutar de la magia de Disneyland.</li>
+          </ul>
+          <p>
+            La preparación forma parte del regalo: buscad fotos, mapas, vídeos y planes.
+            Cada decisión que toméis juntos hará el viaje todavía más especial.
+          </p>
+          <p>Firmado:<br><strong>Los Reyes Magos</strong></p>
+        `;
+      } else {
+        resultado.innerHTML = `
+          <h3>Código no válido</h3>
+          <p>El código introducido no es válido.</p>
+          <p>Revisa la carta de los Reyes Magos e inténtalo de nuevo.</p>
+        `;
+      }
+    }
+  </script>
+</body>
+</html>
